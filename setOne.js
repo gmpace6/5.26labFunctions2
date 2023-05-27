@@ -14,24 +14,32 @@ function findGrape (arr) {
 The code above is an example of 'function declaration.' Please re-write the function in 'function expression' and 'arrow function' syntaxes. 
 */
 
-// RE-WRITE THE ABOVE FUNCTION IN 'FUNCTION EXPRESSION' SYNTAX HERE.
+const findGrape1 = function (arr) {
+    for(let i=0; i<arr.length; i++) {
+        if(arr[i].color === "purple") {
+            return console.log(`The fruit with index ${arr.indexOf(arr[i])} is a grape`)
+        } 
+    }
+}
 
-
-
-// RE-WRITE THE ABOVE FUNCTION IN 'ARROW FUNCTION' SYNTAX HERE.
-
-
+const findGrape2 = (arr) => {
+    for(let i=0; i<arr.length; i++) {
+        if(arr[i].color === "purple") {
+            return console.log(`The fruit with index ${arr.indexOf(arr[i])} is a grape`)
+        } 
+    }
+}
 
 ////////// PROBLEM 2 //////////
 /*
 Write a one line function (give a name of your choice) with an implicit return that when the function is invoked, it will print: 'The first parameter is [parameter1]. The second parameter is [parameter2]'.
 */
 
-// CODE HERE
-
+const returnParams = (param1, param2) => {console.log(`The first parameter is ${param1}. The second parameter is ${param2}.`)}
 
 // INVOKE THE FUNCTION HERE. THE PARAMETERS TAKE ANY DATATYPE.
 
+returnParams('a', 'b')
 
 ////////// PROBLEM 3 //////////
 /*
@@ -39,11 +47,18 @@ Write a function called 'greeting' that takes 3 parameters: firstName, lastName,
 Then, outside of the greeting function, invoke the greeting function, passing in the value firstName and lastName of your choice, and a callback function that takes a parameter of fullName. The callback function will print 'Hello, my full name is [fullName]'. 
 */
 
-// CODE 'GREETING FUNCTION' HERE
+function fullNamefunc (firstName, lastName) {
+    return firstName + " " + lastName
+}
 
+console.log(fullNamefunc("Garrett", "Pace"))
 
-// INVOKE 'GREETING FUNCTION' HERE
+function greeting (firstName, lastName, callback) {
+    let fullName = callback(firstName, lastName)
+        return `Hello, my full name is ${fullName}.`
+    }
 
+console.log(greeting("Garrett", "Pace", fullNamefunc))
 
 ////////// PROBLEM 4 //////////
 
