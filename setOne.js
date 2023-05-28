@@ -72,15 +72,21 @@ let totalCost = []
 Write a function called 'pricesPlusTax' that takes 2 params: an array ('prices' array) and a callback function. Inside the function, loop over the 'prices' array. For every iteration, calculate a new total cost (original price plus 20% tax), then push it to the 'totalCost' array. After the loop, invoke the callback function, passing in the 'totalCost' array.
 */
 
-// CODE HERE
+function passingTotalCostArray(totalCost) {
+    return `New array (including tax) = ${totalCost}.`
+}
 
+function pricesPlusTax(array, callback) {
+    for(let i = 0; i < array.length; i++) {
+        totalCost.push(array[i] * 1.2)
+    } return callback(totalCost)
+}
 
 /* 
 Invoke the 'pricesPlusTax' function, passing in the 'prices' array and a callback function (passing in 'totalCost' as a param) that will print "The new array plus tax = [totalCost]"
 */
 
-// CODE HERE
-
+console.log(pricesPlusTax(prices, passingTotalCostArray))
 
 ////////// PROBLEM 5 //////////
 
@@ -92,15 +98,22 @@ Create a function called 'multiplyingFactory' that takes a number as a param. Th
 The inner function should run this logic: if the first number passing in is greater than and equal to 5, print the multiplication of the first and second numbers. If not, print "Cannot multiply: the first number is smaller than 5." 
 */
 
-// CODE HERE
+function multiplyingFactory(num1) {
+    return function innerFunction(num2) {
+        if(num1 >= 5) {
+            return num1 * num2
+        } else {
+            return "Cannot multiply: the first number is smaller than 5."
+        }
+    }
+}
 
 
 /* 
 Let's invoke the 'multiplyingFactory' function that will return another function, and save it into a variable called 'timesFour.' Let's pass in number 3 as a param.
 */
 
-// CODE HERE
-
+let timesFour = multiplyingFactory(5)
 
 /* 
 Now, timesFour is the new function (the inner function that was being returned when we invoked 'multiplyingFactory' function). The number 3 that we passed in as a first number is now saved in the 'timesFour' function. 
@@ -110,9 +123,9 @@ Let's invoke 'timesFour' and pass in number 4 as a param. Number 4 here is the s
 Run the code in node to see the printed result. You should see "Cannot multiply: the first number is smaller than 5."
 */
 
-// INVOKE 'timesFour' HERE
-
+console.log(timesFour(4))
 
 /* 
 Change the param for 'multiplyingFactory' invocation to number 5. Then invoke 'timesFour' again, passing in number 4. Run the code in node, and you should see 20.
 */
+
