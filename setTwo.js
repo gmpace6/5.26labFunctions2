@@ -64,9 +64,7 @@ first(names, firstName => {
   console.log('The first name in names is ' + firstName)
 })
 
-// The code snippet you provided defines the names array as ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'].
-
-// The first function is also defined, which takes an array (arr) and a callback function (cb). It invokes the callback function with the first element of the array (arr[0]) as an argument and returns the result.
+// The function takes an array (arr) and a callback function (cb). It invokes the callback function with the first element of the array (arr[0]) as an argument and returns the result.
 
 // In the example usage of first(names, firstName => { console.log('The first name in names is ' + firstName) }), the first function is called with the names array. The callback function is an anonymous arrow function that receives the first name as firstName and logs a message to the console, indicating the first name in the names array.
 
@@ -80,18 +78,17 @@ first(names, firstName => {
   Then invoke the callback, passing in the last element in the array as the argument.
 */
 
-// CODE HERE
-
+function last (arr, cb) {
+  return cb(arr[arr.length - 1])
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// last(names, lastName => {
-//   console.log('The last name in names is ' + lastName)
-// })
-
-
+last(names, lastName => {
+  console.log('The last name in names is ' + lastName)
+})
 
 ////////// PROBLEM 4 //////////
 
@@ -102,22 +99,22 @@ first(names, firstName => {
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-// CODE HERE 
-
+function contains (arr, name, cb) {
+  cb(arr.filter(string => string === name))
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
-
-
+contains(names, 'Colt', result => {
+  if(result === true){
+    console.log('Colt is in the array')
+  } else {
+    console.log('Colt is not in the array')
+  }
+  console.log(result)
+})
 
 ////////// PROBLEM 5 //////////
 
@@ -126,9 +123,23 @@ first(names, firstName => {
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
   Hint: you can use a nested for loop to do this.
 */
+let uniqArr = []
 
-// CODE HERE
+function uniq(arr, cb) {
+  for(let i = 0; i < arr.length; i++) {
+    if(!uniqArr.includes(arr[i])) {
+      uniqArr.push(arr[i])
+    }
+  }
+  return cb(uniqArr)
 
+}
+
+function print(arr) {
+  console.log(`The new names array with all the duplicate items removed is ${arr}.`)
+}
+
+console.log(uniqArr)
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
   The callback function should take in one parameter called uniqArr.
@@ -136,7 +147,7 @@ first(names, firstName => {
   'The new names array with all the duplicate items removed is [UNIQARRPARAM].'
 */
 
-// CODE HERE
+uniq(names, print)
 
 
 
@@ -147,8 +158,9 @@ first(names, firstName => {
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
 
-// CODE HERE 
-
+function each (arr, cb) {
+  return cb(arr[i], i)
+}
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -157,9 +169,11 @@ first(names, firstName => {
   'The item at index [INDEXPARAM] is [ITEMPARAM].'
 */
 
-// CODE HERE
+// function printstr (arr[i], i) {
+//   console.log(`The item at index ${i} is ${arr[i]}.`)
+// }
 
-
+// each (names, printstr)
 
 
 
@@ -170,64 +184,50 @@ first(names, firstName => {
 
 
 /*
-  You'll be writing a higher order function that returns
-  another function. 
-
-  Create a function called addingFactory that takes in
-  one parameter (it will be a number).
-
-  addingFactory should return a function that takes in
-  one parameter (this will be another number).
-
-  The (inner) function that's being returned should add
-  the two parameters together and return the sum.
+  You'll be writing a higher order function that returns another function. 
+  Create a function called addingFactory that takes in one parameter (it will be a number).
+  addingFactory should return a function that takes in one parameter (this will be another number).
+  The (inner) function that's being returned should add the two parameters together and return the sum.
 */
 
-// CODE HERE
+function innerFunc(num2) {
+  return num1 + num2
+}
+
+function addingFactory(num1) {
+  return innerFunc(num2)
+}
 
 /*
-  Now that you have addingFactory, you can create other
-  functions from it. 
-
-  You're going to invoke addingFactory and save the result
-  to a new variable. 
-
-  Create a variable called addTen and set it equal to 
-  the invocation of addingFactory passing in the number
+  Now that you have addingFactory, you can create other functions from it. 
+  You're going to invoke addingFactory and save the result to a new variable. 
+  Create a variable called addTen and set it equal to the invocation of addingFactory passing in the number
   10 as an arguemnt.
 */
 
-// CODE HERE
+let addTen = addingFactory(10)
 
 /*
   Now the inner function is stored in the addTen variable! 
-
-  Call the addTen function passing in another number and
-  console log the result.
-
-  Call it a second time, passing in a different number
-  to see the different outputs.
+  Call the addTen function passing in another number and console log the result.
+  Call it a second time, passing in a different number to see the different outputs.
 */
 
-// CODE HERE
+console.log(addTen(5))
 
 /*
   Let's make another function from the addingFactory. 
-
-  This time, pass in your favorite number and name
-  the variable addNUMBER with the name of the number
-  you chose. 
-
-  Once you create that, you can invoke the function
-  to add any number to your favorite number!
+  This time, pass in your favorite number and name the variable addNUMBER with the name of the number you chose. 
+  Once you create that, you can invoke the function to add any number to your favorite number!
 */
 
-// CODE HERE
-
-
-
+let addNUMBER = addingFactory(6)
 
 ////////// CHALLENGE 2 //////////
+
+function getUserById(users, id, cb) {
+  
+}
 
 /*
   Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
