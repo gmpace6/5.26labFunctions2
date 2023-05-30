@@ -5,24 +5,33 @@
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
 
-function times (num1, num2) {
-  return num1 * num2
-}
+// function times (num1, num2) {
+//   return num1 * num2
+// }
 
-function multiply(num1, num2, cb) {
-  let product = cb(num1, num2)
-  return 
-}
-console.log(multiply(3,2,times))
+// function multiply(num1, num2, cb) {
+//   let answer = cb(num1, num2)
+//   return answer
+// }
+// console.log(multiply(3, 2, times))
 
+function multiply(num1, num2, callback){
+  return callback(num1 * num2)
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// multiply(4, 3, answer => {
-//   console.log('The answer is ' + answer) //should console.log 12
-// })
+multiply(4, 3, answer => {
+  console.log('The answer is ' + answer) //should console.log 12
+})
+
+// The multiply function multiplies num1 and num2 together and then calls the callback function, passing the result as an argument. The callback function is expected to handle the result in some way.
+
+// In the example usage of multiply(4, 3, answer => { console.log('The answer is ' + answer) }), the numbers 4 and 3 are multiplied together, resulting in 12. The anonymous arrow function (answer => { console.log('The answer is ' + answer) }) is provided as the callback.
+
+// When the callback function is invoked, it logs the message "The answer is 12" to the console because the answer parameter receives the value of 12 from the multiply function.
 
 
 
@@ -43,17 +52,25 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// CODE HERE 
-
+function first (arr, cb) {
+  return cb(arr[0])
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// first(names, firstName => {
-//   console.log('The first name in names is ' + firstName)
-// })
+first(names, firstName => {
+  console.log('The first name in names is ' + firstName)
+})
 
+// The code snippet you provided defines the names array as ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'].
+
+// The first function is also defined, which takes an array (arr) and a callback function (cb). It invokes the callback function with the first element of the array (arr[0]) as an argument and returns the result.
+
+// In the example usage of first(names, firstName => { console.log('The first name in names is ' + firstName) }), the first function is called with the names array. The callback function is an anonymous arrow function that receives the first name as firstName and logs a message to the console, indicating the first name in the names array.
+
+// When this code is executed, it would output "The first name in names is Tyler" to the console. This is because the first function takes the first element of the names array, which is "Tyler", and passes it as an argument to the callback function, which then logs the message using that value.
 
 
 ////////// PROBLEM 3 //////////
@@ -249,6 +266,6 @@ var users = [
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-getUserById(users, '16t', user => {
-  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
-})
+// getUserById(users, '16t', user => {
+//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
+// })
