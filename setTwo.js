@@ -5,7 +5,15 @@
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
 
-// CODE HERE
+function times (num1, num2) {
+  return num1 * num2
+}
+
+function multiply(num1, num2, cb) {
+  let product = cb(num1, num2)
+  return 
+}
+console.log(multiply(3,2,times))
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
